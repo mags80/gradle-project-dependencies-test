@@ -1,0 +1,8 @@
+rootProject.name = 'my-application'
+include 'subproject1'
+include 'someDirectory:subproject2'
+
+include ':library'
+project(':library').projectDir = new File(settingsDir, '../library')
+
+
