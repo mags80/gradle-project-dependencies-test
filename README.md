@@ -1,1 +1,0 @@
-# gradle-project-dependencies-test
