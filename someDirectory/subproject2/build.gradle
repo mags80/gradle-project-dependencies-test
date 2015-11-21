@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    compile 'no.jpro:library:1.0-SNAPSHOT'
+    compile 'no.gradle.example:library:1.0-SNAPSHOT'
 
     compile 'org.codehaus.groovy:groovy-all:2.3.11'
 }

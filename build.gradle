@@ -1,4 +1,4 @@
-group 'no.jpro'
+group 'no.gradle.example'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'groovy'
@@ -19,7 +19,7 @@ dependencies {
 
 subprojects {
     apply plugin: 'java'
-    group 'no.jpro'
+    group 'no.gradle.example'
     version '1.0-SNAPSHOT'
     repositories {
         mavenLocal()
@@ -28,7 +28,7 @@ subprojects {
 
     configurations.all {
         resolutionStrategy.dependencySubstitution {
-            substitute module("no.jpro:library") with project(":library")
+            substitute module("no.gradle.example:library") with project(":library")
         }
     }
 }
