@@ -1,8 +1,8 @@
-package no.jpro.subproject2;
+package no.gradle.example.subproject2;
 
 
-import no.jpro.library.MyLibrary;
-import no.jpro.library.MyLibraryImpl;
+import no.gradle.example.library.MyLibrary;
+import no.gradle.example.library.MyLibraryImpl;
 
 public class HelloWorld {
 

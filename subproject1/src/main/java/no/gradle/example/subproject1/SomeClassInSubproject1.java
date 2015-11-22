@@ -1,6 +1,6 @@
-package no.jpro.subproject1;
+package no.gradle.example.subproject1;
 
-import no.jpro.subproject2.HelloWorld;
+import no.gradle.example.subproject2.HelloWorld;
 
 public class SomeClassInSubproject1 {
 
