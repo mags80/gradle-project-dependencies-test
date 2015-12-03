@@ -10,9 +10,6 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-}
-
 subprojects {
     apply plugin: 'java'
     group 'group.application'
@@ -23,15 +20,35 @@ subprojects {
     }
 
     configurations.all {
-        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+        resolutionStrategy {
+            cacheChangingModulesFor 0, 'seconds'
+
+            dependencySubstitution.all { DependencySubstitution dependency ->
+                if (dependencyIsForAChangingModule(dependency)) {
+                    if (dependency.requested.group == "group.common") {
+                        def targetProject = findProject(":${dependency.requested.module}")
+                        if (targetProject != null) {
+                            dependency.useTarget targetProject
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    //configurations.all {
-    //    resolutionStrategy {
-    //        dependencySubstitution {
-    //            substitute module("group.common:library") with project(":library")
-    //        }
-    //    }
-    //}
+}
+
+def enum SubstitutableGroupName {
+    GROUP_COMMON("group.common");
+
+    String groupName
+
+    SubstitutableGroupName(String groupName) {
+        this.groupName = groupName
+    }
+}
+
+def boolean dependencyIsForAChangingModule(DependencySubstitution dependency) {
+    return dependency.requested instanceof ModuleComponentSelector && dependency.requested.version.endsWith("SNAPSHOT");
 }
 

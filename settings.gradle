@@ -3,7 +3,8 @@ rootProject.name = 'application'
 include 'subproject1'
 include 'directory:subproject2'
 
-//include ':library'
-//project(':library').projectDir = new File(settingsDir, '../library')
-
-
+def libraryDirectory = new File(settingsDir, '../library')
+if (libraryDirectory.exists()) {
+    include ':library'
+    project(':library').projectDir = new File(settingsDir, '../library')
+}

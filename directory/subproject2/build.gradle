@@ -1,4 +1,5 @@
 dependencies {
     compile 'group.common:library:1.0-SNAPSHOT'
+    //compile 'group.common:library:1.0'
     testCompile 'org.testng:testng:6.9.9'
 }
