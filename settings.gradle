@@ -1,4 +1,5 @@
 rootProject.name = 'application'
+
 include 'subproject1'
 include 'directory:subproject2'
 

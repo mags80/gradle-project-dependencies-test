@@ -1,11 +1,9 @@
-group 'no.gradle.example'
+group 'group.application'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'groovy'
 apply plugin: 'war'
+apply plugin: 'groovy'
 apply plugin: 'idea'
-
-sourceCompatibility = 1.8
 
 repositories {
     mavenLocal()
@@ -13,12 +11,11 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
 subprojects {
     apply plugin: 'java'
-    group 'no.gradle.example'
+    group 'group.application'
     version '1.0-SNAPSHOT'
     repositories {
         mavenLocal()
@@ -26,8 +23,10 @@ subprojects {
     }
 
     configurations.all {
-        resolutionStrategy.dependencySubstitution {
-            substitute module("no.gradle.example:library") with project(":library")
+        resolutionStrategy {
+            dependencySubstitution {
+                substitute module("no.gradle.example:library") with project(":library")
+            }
         }
     }
 }
