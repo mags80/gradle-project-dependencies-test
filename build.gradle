@@ -25,7 +25,7 @@ subprojects {
     configurations.all {
         resolutionStrategy {
             dependencySubstitution {
-                substitute module("no.gradle.example:library") with project(":library")
+                substitute module("group.common:library") with project(":library")
             }
         }
     }
