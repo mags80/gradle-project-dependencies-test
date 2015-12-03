@@ -22,12 +22,12 @@ subprojects {
         mavenCentral()
     }
 
-    configurations.all {
-        resolutionStrategy {
-            dependencySubstitution {
-                substitute module("group.common:library") with project(":library")
-            }
-        }
-    }
+    //configurations.all {
+    //    resolutionStrategy {
+    //        dependencySubstitution {
+    //            substitute module("group.common:library") with project(":library")
+    //        }
+    //    }
+    //}
 }
 
