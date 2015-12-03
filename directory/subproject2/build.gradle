@@ -1,6 +1,3 @@
-group 'no.jpro'
-version '1.0-SNAPSHOT'
-
 apply plugin: 'groovy'
 apply plugin: 'java'
 apply plugin: 'idea'
@@ -13,6 +10,4 @@ repositories {
 
 dependencies {
     compile 'no.gradle.example:library:1.0-SNAPSHOT'
-
-    compile 'org.codehaus.groovy:groovy-all:2.3.11'
 }
