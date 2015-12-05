@@ -38,16 +38,6 @@ subprojects {
 
 }
 
-def enum SubstitutableGroupName {
-    GROUP_COMMON("group.common");
-
-    String groupName
-
-    SubstitutableGroupName(String groupName) {
-        this.groupName = groupName
-    }
-}
-
 def boolean dependencyIsForAChangingModule(DependencySubstitution dependency) {
     return dependency.requested instanceof ModuleComponentSelector && dependency.requested.version.endsWith("SNAPSHOT");
 }
