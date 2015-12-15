@@ -11,24 +11,29 @@ repositories {
 }
 
 subprojects {
+
     apply plugin: 'java'
     group 'group.application'
     version '1.0-SNAPSHOT'
+
     repositories {
         mavenLocal()
         mavenCentral()
     }
 
+    //noinspection GroovyAssignabilityCheck
     configurations.all {
         resolutionStrategy {
             cacheChangingModulesFor 0, 'seconds'
 
-            dependencySubstitution.all { DependencySubstitution dependency ->
-                if (dependencyIsForAChangingModule(dependency)) {
-                    if (dependency.requested.group == "group.common") {
-                        def targetProject = findProject(":${dependency.requested.module}")
-                        if (targetProject != null) {
-                            dependency.useTarget targetProject
+            if(Boolean.valueOf(System.getProperty("doReplaceLibraryDeps"))) {
+                dependencySubstitution.all { DependencySubstitution dependency ->
+                    if (dependencyIsForAChangingModule(dependency)) {
+                        if (dependency.requested.group == "group.common") {
+                            def targetProject = findProject(":${dependency.requested.module}")
+                            if (targetProject != null) {
+                                dependency.useTarget targetProject
+                            }
                         }
                     }
                 }

@@ -3,8 +3,12 @@ rootProject.name = 'application'
 include 'subproject1'
 include 'directory:subproject2'
 
-def libraryDirectory = new File(settingsDir, '../library')
-if (libraryDirectory.exists()) {
-    include ':library'
-    project(':library').projectDir = new File(settingsDir, '../library')
+if(Boolean.valueOf(System.getProperty("doReplaceLibraryDeps"))) {
+
+    def libraryDirectory = new File(settingsDir, '../library')
+    if (libraryDirectory.exists()) {
+        include ':library'
+        project(':library').projectDir = new File(settingsDir, '../library')
+    }
+
 }
