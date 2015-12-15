@@ -10,7 +10,7 @@ repositories {
     mavenCentral()
 }
 
-subprojects {
+subprojects { Project subProject ->
 
     apply plugin: 'java'
     group 'group.application'
@@ -26,7 +26,7 @@ subprojects {
         resolutionStrategy {
             cacheChangingModulesFor 0, 'seconds'
 
-            if(Boolean.valueOf(System.getProperty("doReplaceLibraryDeps"))) {
+            if (Boolean.valueOf(System.getProperty("doReplaceLibraryDeps"))) {
                 dependencySubstitution.all { DependencySubstitution dependency ->
                     if (dependencyIsForAChangingModule(dependency)) {
                         if (dependency.requested.group == "group.common") {
@@ -40,7 +40,6 @@ subprojects {
             }
         }
     }
-
 }
 
 def boolean dependencyIsForAChangingModule(DependencySubstitution dependency) {
